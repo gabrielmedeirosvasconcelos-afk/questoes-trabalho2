@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>V/F – Recursos (Processo do Trabalho) – Revisão Interativa</title>
+<style>
+  :root { --ok:#2e7d32; --bad:#c62828; --neutral:#e0e0e0; --ink:#111; }
+  body { font-family: Arial, sans-serif; margin: 24px; background:#f6f7f9; color:var(--ink); }
+  h1 { margin: 0 0 6px 0; }
+  .subtitle { color:#555; margin-bottom: 22px; }
+  .question { background:#fff; padding:16px; margin-bottom:16px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,.08); }
+  .statement { margin:0 0 12px 0; line-height:1.45; }
+  .choices { display:flex; gap:8px; flex-wrap:wrap; }
+  .btn { border:0; background:var(--neutral); color:var(--ink); padding:9px 14px; border-radius:8px; cursor:pointer; font-weight:700; }
+  .btn.ok { background:var(--ok); color:#fff; }
+  .btn.bad { background:var(--bad); color:#fff; }
+  .feedback { margin-top:8px; font-weight:800; }
+  .feedback.ok { color:var(--ok); }
+  .feedback.bad { color:var(--bad); }
+  details { margin-top:10px; }
+  details summary { cursor:pointer; font-weight:700; }
+  .source { color:#444; font-style:italic; margin-top:5px; }
+</style>
+<script>
+function checkAnswer(q, chosen) {
+  const node = document.querySelector(`[data-q='${q}']`);
+  const correct = node.dataset.correct;
+  const btnV = document.getElementById(`btnV-${q}`);
+  const btnF = document.getElementById(`btnF-${q}`);
+  const fb = document.getElementById(`fb-${q}`);
+  const exp = document.getElementById(`exp-${q}`);
+  // reset
+  btnV.classList.remove('ok','bad');
+  btnF.classList.remove('ok','bad');
+  fb.classList.remove('ok','bad');
+  // apply
+  if (chosen === correct) {
+    fb.textContent = "✅ Correto";
+    fb.classList.add('ok');
+    if (chosen === 'V') btnV.classList.add('ok'); else btnF.classList.add('ok');
+  } else {
+    fb.textContent = "❌ Incorreto";
+    fb.classList.add('bad');
+    if (chosen === 'V') btnV.classList.add('bad'); else btnF.classList.add('bad');
+  }
+  exp.open = true;
+}
+</script>
+</head>
+<body>
+  <h1>Verdadeiro ou Falso – Recursos no Processo do Trabalho</h1>
+  <div class="subtitle">Base: <em>Ponto 9 – Teoria Geral dos Recursos</em> e <em>Ponto 10 – Recursos em Espécie</em>. Cada explicação foi pensada para revisão rápida.</div>
+
+  <div class="question" data-q="1" data-correct="V">
+    <p class="statement"><strong>1.</strong> No Processo do Trabalho, o efeito suspensivo não é a regra dos recursos.</p>
+    <div class="choices">
+      <button id="btnV-1" class="btn" onclick="checkAnswer(1, 'V')">Verdadeiro</button>
+      <button id="btnF-1" class="btn" onclick="checkAnswer(1, 'F')">Falso</button>
+    </div>
+    <div id="fb-1" class="feedback"></div>
+    <details id="exp-1">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Ideia-chave:</strong> A regra é <em>efeito devolutivo</em>; por isso há possibilidade de execução provisória.</li>
+        <li><strong>Revisão:</strong> Efeito suspensivo pode ser concedido em hipóteses legais específicas; memorize a exceção.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Princípio da manutenção dos efeitos da sentença: CLT art. 899; CPC art. 1012.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="2" data-correct="F">
+    <p class="statement"><strong>2.</strong> O efeito devolutivo significa que o Tribunal pode reexaminar toda a demanda, inclusive o que não foi impugnado.</p>
+    <div class="choices">
+      <button id="btnV-2" class="btn" onclick="checkAnswer(2, 'V')">Verdadeiro</button>
+      <button id="btnF-2" class="btn" onclick="checkAnswer(2, 'F')">Falso</button>
+    </div>
+    <div id="fb-2" class="feedback"></div>
+    <details id="exp-2">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Ideia-chave:</strong> Efeito devolutivo transfere ao Tribunal apenas as <em>questões impugnadas</em> (extensão) e, em alguns casos, matérias de ordem pública (profundidade/translativo).</li>
+        <li><strong>Alerta:</strong> O Tribunal não pode extrapolar o que foi devolvido, salvo matérias cognoscíveis de ofício.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Efeitos dos recursos (devolutivo, suspensivo, translativo, substitutivo, extensivo).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="3" data-correct="V">
+    <p class="statement"><strong>3.</strong> O efeito substitutivo significa que a decisão do Tribunal substitui a decisão recorrida no que foi objeto do recurso.</p>
+    <div class="choices">
+      <button id="btnV-3" class="btn" onclick="checkAnswer(3, 'V')">Verdadeiro</button>
+      <button id="btnF-3" class="btn" onclick="checkAnswer(3, 'F')">Falso</button>
+    </div>
+    <div id="fb-3" class="feedback"></div>
+    <details id="exp-3">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Fixe:</strong> O acórdão substitui a sentença nos limites do que foi impugnado e apreciado.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Efeitos dos recursos: substitutivo.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="4" data-correct="V">
+    <p class="statement"><strong>4.</strong> No Processo do Trabalho, decisões interlocutórias são, como regra, irrecorríveis de imediato.</p>
+    <div class="choices">
+      <button id="btnV-4" class="btn" onclick="checkAnswer(4, 'V')">Verdadeiro</button>
+      <button id="btnF-4" class="btn" onclick="checkAnswer(4, 'F')">Falso</button>
+    </div>
+    <div id="fb-4" class="feedback"></div>
+    <details id="exp-4">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> Irrecorribilidade imediata é a regra; há exceções importantes.</li>
+        <li><strong>Exceções (Súmula 214/TST):</strong> contrariedade a súmula/OJ do TST; agravo regimental para o mesmo tribunal; acolhimento de incompetência territorial com remessa a TRT distinto.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Princípio da irrecorribilidade imediata (CLT art. 893 §1º; Súmula 214/TST).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="5" data-correct="F">
+    <p class="statement"><strong>5.</strong> O princípio da fungibilidade autoriza sempre que qualquer recurso seja conhecido como outro mais adequado.</p>
+    <div class="choices">
+      <button id="btnV-5" class="btn" onclick="checkAnswer(5, 'V')">Verdadeiro</button>
+      <button id="btnF-5" class="btn" onclick="checkAnswer(5, 'F')">Falso</button>
+    </div>
+    <div id="fb-5" class="feedback"></div>
+    <details id="exp-5">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Ideia:</strong> No processo do trabalho, a fungibilidade é admitida com parcimônia; exige dúvida objetiva e demais pressupostos preenchidos.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Princípio da fungibilidade.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="6" data-correct="V">
+    <p class="statement"><strong>6.</strong> O princípio da discursividade (dialeticidade) exige que o recorrente enfrente os fundamentos da decisão.</p>
+    <div class="choices">
+      <button id="btnV-6" class="btn" onclick="checkAnswer(6, 'V')">Verdadeiro</button>
+      <button id="btnF-6" class="btn" onclick="checkAnswer(6, 'F')">Falso</button>
+    </div>
+    <div id="fb-6" class="feedback"></div>
+    <details id="exp-6">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Recurso sem impugnação específica viola dialeticidade e pode não ser conhecido.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Princípio da discursividade; Súmula 422/TST (analogia CPC art. 1010, II).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="7" data-correct="F">
+    <p class="statement"><strong>7.</strong> O duplo grau de jurisdição é princípio com assento textual expresso na Constituição brasileira.</p>
+    <div class="choices">
+      <button id="btnV-7" class="btn" onclick="checkAnswer(7, 'V')">Verdadeiro</button>
+      <button id="btnF-7" class="btn" onclick="checkAnswer(7, 'F')">Falso</button>
+    </div>
+    <div id="fb-7" class="feedback"></div>
+    <details id="exp-7">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Detalhe:</strong> Não há texto expresso; a doutrina relaciona o duplo grau a garantias como devido processo legal e ampla defesa.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Princípio do duplo grau: construção doutrinária.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="8" data-correct="V">
+    <p class="statement"><strong>8.</strong> Recurso não pode piorar a situação do recorrente (proibição da reformatio in pejus), salvo questões de ordem pública.</p>
+    <div class="choices">
+      <button id="btnV-8" class="btn" onclick="checkAnswer(8, 'V')">Verdadeiro</button>
+      <button id="btnF-8" class="btn" onclick="checkAnswer(8, 'F')">Falso</button>
+    </div>
+    <div id="fb-8" class="feedback"></div>
+    <details id="exp-8">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Exame:</strong> Se só o autor recorre, não se pode agravar sua situação, exceto matérias cognoscíveis de ofício.</li>
+      </ul></div>
+      <div class="source">Fonte: Ponto 9 – Proibição da reformatio in pejus.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="9" data-correct="F">
+    <p class="statement"><strong>9.</strong> O efeito extensivo significa que o recurso de um litisconsorte sempre aproveita aos demais, independentemente do tipo de litisconsórcio.</p>
+    <div class="choices">
+      <button id="btnV-9" class="btn" onclick="checkAnswer(9, 'V')">Verdadeiro</button>
+      <button id="btnF-9" class="btn" onclick="checkAnswer(9, 'F')">Falso</button>
+    </div>
+    <div id="fb-9" class="feedback"></div>
+    <details id="exp-9">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Efeito extensivo é típico do litisconsórcio <em>unitário</em>, não em qualquer litisconsórcio.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Efeitos dos recursos: extensivo (litisconsórcio unitário).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="10" data-correct="V">
+    <p class="statement"><strong>10.</strong> O efeito translativo permite ao Tribunal conhecer de ofício matérias de ordem pública em qualquer grau.</p>
+    <div class="choices">
+      <button id="btnV-10" class="btn" onclick="checkAnswer(10, 'V')">Verdadeiro</button>
+      <button id="btnF-10" class="btn" onclick="checkAnswer(10, 'F')">Falso</button>
+    </div>
+    <div id="fb-10" class="feedback"></div>
+    <details id="exp-10">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Exemplo:</strong> nulidades absolutas, condições da ação e pressupostos processuais relevantes.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Efeito translativo (ex.: TRT-18 ROT 0010153-28.2021.5.18.0003).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="11" data-correct="F">
+    <p class="statement"><strong>11.</strong> O Ministério Público do Trabalho pode recorrer para defender interesse patrimonial privado de empresa pública.</p>
+    <div class="choices">
+      <button id="btnV-11" class="btn" onclick="checkAnswer(11, 'V')">Verdadeiro</button>
+      <button id="btnF-11" class="btn" onclick="checkAnswer(11, 'F')">Falso</button>
+    </div>
+    <div id="fb-11" class="feedback"></div>
+    <details id="exp-11">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Ponto-chave:</strong> MPT não tem legitimidade para interesses patrimoniais privados; tem quando há matéria de ordem pública (ex.: vínculo sem concurso com sociedade de economia mista).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – OJ 237/TST (itens I e II).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="12" data-correct="F">
+    <p class="statement"><strong>12.</strong> No processo do trabalho, o art. 191 do CPC (prazo em dobro por procuradores distintos) se aplica integralmente.</p>
+    <div class="choices">
+      <button id="btnV-12" class="btn" onclick="checkAnswer(12, 'V')">Verdadeiro</button>
+      <button id="btnF-12" class="btn" onclick="checkAnswer(12, 'F')">Falso</button>
+    </div>
+    <div id="fb-12" class="feedback"></div>
+    <details id="exp-12">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> OJ 310 da SDI-I/TST afasta essa aplicação pela celeridade; prazos trabalhistas não dobram por procuradores distintos.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – OJ 310 SDI-I/TST (prazo em dobro inaplicável).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="13" data-correct="V">
+    <p class="statement"><strong>13.</strong> A deserção pode ser declarada quando o preparo (custas/depósito) é recolhido por terceiro estranho à lide.</p>
+    <div class="choices">
+      <button id="btnV-13" class="btn" onclick="checkAnswer(13, 'V')">Verdadeiro</button>
+      <button id="btnF-13" class="btn" onclick="checkAnswer(13, 'F')">Falso</button>
+    </div>
+    <div id="fb-13" class="feedback"></div>
+    <details id="exp-13">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Fixe:</strong> Preparo deve ser realizado pela própria parte; recolhimento por terceiro pode gerar deserção e o TST não concede prazo para regularização.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Jurisprudência destacada (TRT-21 RORSum 0000275-94.2023.5.21.0013).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="14" data-correct="V">
+    <p class="statement"><strong>14.</strong> Beneficiário de justiça gratuita é isento de depósito recursal no processo do trabalho.</p>
+    <div class="choices">
+      <button id="btnV-14" class="btn" onclick="checkAnswer(14, 'V')">Verdadeiro</button>
+      <button id="btnF-14" class="btn" onclick="checkAnswer(14, 'F')">Falso</button>
+    </div>
+    <div id="fb-14" class="feedback"></div>
+    <details id="exp-14">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Detalhe:</strong> Também há redução pela metade para MEI/ME/EPP e entidades sem fins lucrativos (CLT art. 899, §§ 9º-11).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Preparo/depósito recursal; CLT art. 899 §§ 9º-11.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="15" data-correct="F">
+    <p class="statement"><strong>15.</strong> O princípio da voluntariedade veda o conhecimento, pelo Tribunal, de matérias não alegadas no recurso, ainda que de ordem pública.</p>
+    <div class="choices">
+      <button id="btnV-15" class="btn" onclick="checkAnswer(15, 'V')">Verdadeiro</button>
+      <button id="btnF-15" class="btn" onclick="checkAnswer(15, 'F')">Falso</button>
+    </div>
+    <div id="fb-15" class="feedback"></div>
+    <details id="exp-15">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Correção:</strong> Matérias de ordem pública podem ser conhecidas de ofício (efeito translativo), não se submetendo à voluntariedade.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Princípio da voluntariedade vs. efeito translativo.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="16" data-correct="V">
+    <p class="statement"><strong>16.</strong> Para preparar recurso, o pagamento das custas é dispensado ao MP, União, Estados, Municípios e autarquias não exploradoras de atividade econômica.</p>
+    <div class="choices">
+      <button id="btnV-16" class="btn" onclick="checkAnswer(16, 'V')">Verdadeiro</button>
+      <button id="btnF-16" class="btn" onclick="checkAnswer(16, 'F')">Falso</button>
+    </div>
+    <div id="fb-16" class="feedback"></div>
+    <details id="exp-16">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Nota:</strong> A isenção não afasta eventual reembolso de despesas à parte vencedora (parágrafo único do art. 790-A).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Preparo; CLT art. 790-A.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="17" data-correct="F">
+    <p class="statement"><strong>17.</strong> ‘Por simples petição’ (CLT art. 899) significa que o recurso dispensa fundamentação.</p>
+    <div class="choices">
+      <button id="btnV-17" class="btn" onclick="checkAnswer(17, 'V')">Verdadeiro</button>
+      <button id="btnF-17" class="btn" onclick="checkAnswer(17, 'F')">Falso</button>
+    </div>
+    <div id="fb-17" class="feedback"></div>
+    <details id="exp-17">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Alerta:</strong> A dialeticidade exige impugnação específica dos fundamentos; sem isso, o recurso pode ser inadmissível.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Princípio da discursividade; Súmula 422/TST.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="18" data-correct="V">
+    <p class="statement"><strong>18.</strong> A suspensão/ interrupção do prazo recursal segue regras próprias: ED interrompe, férias forenses suspendem etc.</p>
+    <div class="choices">
+      <button id="btnV-18" class="btn" onclick="checkAnswer(18, 'V')">Verdadeiro</button>
+      <button id="btnF-18" class="btn" onclick="checkAnswer(18, 'F')">Falso</button>
+    </div>
+    <div id="fb-18" class="feedback"></div>
+    <details id="exp-18">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Memorize:</strong> Interrupção por ED (CPC art. 1026); outras hipóteses no material (falecimento, força maior).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Tempestividade (suspensão/interrupção).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="19" data-correct="F">
+    <p class="statement"><strong>19.</strong> A parte pode recorrer apenas para discutir o fundamento da decisão, ainda que tenha sido vencedora no dispositivo.</p>
+    <div class="choices">
+      <button id="btnV-19" class="btn" onclick="checkAnswer(19, 'V')">Verdadeiro</button>
+      <button id="btnF-19" class="btn" onclick="checkAnswer(19, 'F')">Falso</button>
+    </div>
+    <div id="fb-19" class="feedback"></div>
+    <details id="exp-19">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Ideia:</strong> Interesse recursal exige necessidade/ utilidade do provimento; discussão puramente teórica do fundamento não gera interesse (salvo hipóteses como coisa julgada secundum eventum probationis).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – Interesse jurídico (necessidade/ utilidade).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="20" data-correct="V">
+    <p class="statement"><strong>20.</strong> O depósito recursal passa a ter novos limites financeiros a partir de 1º de agosto (atualização anual pelo INPC).</p>
+    <div class="choices">
+      <button id="btnV-20" class="btn" onclick="checkAnswer(20, 'V')">Verdadeiro</button>
+      <button id="btnF-20" class="btn" onclick="checkAnswer(20, 'F')">Falso</button>
+    </div>
+    <div id="fb-20" class="feedback"></div>
+    <details id="exp-20">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Dica de prova:</strong> No material constam valores de referência para RO e RR/Embargos/AR na virada anual (INPC).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 9 – ‘Novos valores dos depósitos recursais (TST)’.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="21" data-correct="V">
+    <p class="statement"><strong>21.</strong> Cabe Recurso Ordinário contra decisões definitivas ou terminativas das Varas do Trabalho.</p>
+    <div class="choices">
+      <button id="btnV-21" class="btn" onclick="checkAnswer(21, 'V')">Verdadeiro</button>
+      <button id="btnF-21" class="btn" onclick="checkAnswer(21, 'F')">Falso</button>
+    </div>
+    <div id="fb-21" class="feedback"></div>
+    <details id="exp-21">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> CLT art. 895, alínea “a”.</li>
+        <li><strong>Prazo:</strong> 8 dias úteis (em dobro para Fazenda Pública, MPT e Defensoria, inclusive contrarrazões).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Recurso Ordinário (cabimento e prazo).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="22" data-correct="F">
+    <p class="statement"><strong>22.</strong> No RO, há juízo de retratação amplo: o juiz sempre pode reformar a sentença após o recurso.</p>
+    <div class="choices">
+      <button id="btnV-22" class="btn" onclick="checkAnswer(22, 'V')">Verdadeiro</button>
+      <button id="btnF-22" class="btn" onclick="checkAnswer(22, 'F')">Falso</button>
+    </div>
+    <div id="fb-22" class="feedback"></div>
+    <details id="exp-22">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Em regra, não há juízo de retratação (salvo hipóteses pontuais como indeferimento da inicial, extinção sem mérito e improcedência liminar).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RO: observação sobre retratação (três exceções).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="23" data-correct="V">
+    <p class="statement"><strong>23.</strong> No RO, o preparo envolve custas e, se for o caso, depósito recursal; empregado só recolhe custas em hipóteses específicas.</p>
+    <div class="choices">
+      <button id="btnV-23" class="btn" onclick="checkAnswer(23, 'V')">Verdadeiro</button>
+      <button id="btnF-23" class="btn" onclick="checkAnswer(23, 'F')">Falso</button>
+    </div>
+    <div id="fb-23" class="feedback"></div>
+    <details id="exp-23">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Detalhe:</strong> Empregado recolhe custas quando <em>não</em> beneficiário da justiça gratuita, em total improcedência ou extinção sem mérito.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RO: preparo (custas/depósito).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="24" data-correct="F">
+    <p class="statement"><strong>24.</strong> O Recurso de Revista admite reexame de fatos e provas, desde que essenciais à tese jurídica.</p>
+    <div class="choices">
+      <button id="btnV-24" class="btn" onclick="checkAnswer(24, 'V')">Verdadeiro</button>
+      <button id="btnF-24" class="btn" onclick="checkAnswer(24, 'F')">Falso</button>
+    </div>
+    <div id="fb-24" class="feedback"></div>
+    <details id="exp-24">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Fixe:</strong> RR versa sobre matéria de direito, não reexamina fatos/provas (Súmula 126/TST).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RR: Súmula 126/TST.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="25" data-correct="V">
+    <p class="statement"><strong>25.</strong> O Recurso de Revista exige transcendência e prequestionamento do tema nas instâncias ordinárias.</p>
+    <div class="choices">
+      <button id="btnV-25" class="btn" onclick="checkAnswer(25, 'V')">Verdadeiro</button>
+      <button id="btnF-25" class="btn" onclick="checkAnswer(25, 'F')">Falso</button>
+    </div>
+    <div id="fb-25" class="feedback"></div>
+    <details id="exp-25">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> Transcendência (art. 896-A, CLT) e prequestionamento (Súmula 297/TST).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RR: transcendência e prequestionamento.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="26" data-correct="V">
+    <p class="statement"><strong>26.</strong> Não existe Recurso Especial na Justiça do Trabalho; sua função é desempenhada pelo Recurso de Revista.</p>
+    <div class="choices">
+      <button id="btnV-26" class="btn" onclick="checkAnswer(26, 'V')">Verdadeiro</button>
+      <button id="btnF-26" class="btn" onclick="checkAnswer(26, 'F')">Falso</button>
+    </div>
+    <div id="fb-26" class="feedback"></div>
+    <details id="exp-26">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Lembrete:</strong> RR é o ‘equivalente funcional’ do REsp no processo civil.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RR: equivalência ao Recurso Especial (seara civil).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="27" data-correct="V">
+    <p class="statement"><strong>27.</strong> A dialeticidade (Súmula 422/TST) e a representação regular (Súmula 425/TST) são requisitos formais também no RR.</p>
+    <div class="choices">
+      <button id="btnV-27" class="btn" onclick="checkAnswer(27, 'V')">Verdadeiro</button>
+      <button id="btnF-27" class="btn" onclick="checkAnswer(27, 'F')">Falso</button>
+    </div>
+    <div id="fb-27" class="feedback"></div>
+    <details id="exp-27">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Check-list:</strong> Regularidade formal, depósito recursal (dobro do RO, observando teto), prequestionamento e transcendência.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RR: requisitos de admissibilidade.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="28" data-correct="F">
+    <p class="statement"><strong>28.</strong> Para demonstrar divergência no RR, basta citar a data de publicação do acórdão paradigma.</p>
+    <div class="choices">
+      <button id="btnV-28" class="btn" onclick="checkAnswer(28, 'V')">Verdadeiro</button>
+      <button id="btnF-28" class="btn" onclick="checkAnswer(28, 'F')">Falso</button>
+    </div>
+    <div id="fb-28" class="feedback"></div>
+    <details id="exp-28">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Correto:</strong> Súmula 337/TST exige transcrição do trecho divergente, indicação da fonte e dados do processo; há requisitos rigorosos.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Súmula 337/TST (comprovação da divergência).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="29" data-correct="F">
+    <p class="statement"><strong>29.</strong> É cabível RR em dissídios coletivos e processos de competência originária dos TRTs.</p>
+    <div class="choices">
+      <button id="btnV-29" class="btn" onclick="checkAnswer(29, 'V')">Verdadeiro</button>
+      <button id="btnF-29" class="btn" onclick="checkAnswer(29, 'F')">Falso</button>
+    </div>
+    <div id="fb-29" class="feedback"></div>
+    <details id="exp-29">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> Não cabe RR nessas hipóteses; atente ao art. 896 da CLT e às restrições indicadas.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RR: cabimento (vedações).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="30" data-correct="V">
+    <p class="statement"><strong>30.</strong> Embargos de Declaração servem para omissão, contradição e obscuridade, e podem ter efeito modificativo.</p>
+    <div class="choices">
+      <button id="btnV-30" class="btn" onclick="checkAnswer(30, 'V')">Verdadeiro</button>
+      <button id="btnF-30" class="btn" onclick="checkAnswer(30, 'F')">Falso</button>
+    </div>
+    <div id="fb-30" class="feedback"></div>
+    <details id="exp-30">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> CLT art. 897-A; CPC arts. 1022-1026; TST-IN 39/2016; Súmula 278/TST (efeito prequestionatório).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Embargos de Declaração.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="31" data-correct="F">
+    <p class="statement"><strong>31.</strong> Embargos ao TST (SDI/SDC) têm cabimento único e simples, sem influência regimental.</p>
+    <div class="choices">
+      <button id="btnV-31" class="btn" onclick="checkAnswer(31, 'V')">Verdadeiro</button>
+      <button id="btnF-31" class="btn" onclick="checkAnswer(31, 'F')">Falso</button>
+    </div>
+    <div id="fb-31" class="feedback"></div>
+    <details id="exp-31">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Recurso hermético, de cabimento diversificado e fortemente influenciado por regras regimentais e jurisprudência.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Embargos ao TST (características).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="32" data-correct="V">
+    <p class="statement"><strong>32.</strong> Embargos infringentes na SDC cabem contra decisões não unânimes em dissídios coletivos de competência originária do TST.</p>
+    <div class="choices">
+      <button id="btnV-32" class="btn" onclick="checkAnswer(32, 'V')">Verdadeiro</button>
+      <button id="btnF-32" class="btn" onclick="checkAnswer(32, 'F')">Falso</button>
+    </div>
+    <div id="fb-32" class="feedback"></div>
+    <details id="exp-32">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Memorize:</strong> Natureza ordinária; prazo de 8 dias.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Embargos Infringentes (SDC).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="33" data-correct="V">
+    <p class="statement"><strong>33.</strong> Embargos de divergência na SDI visam uniformizar divergência entre Turmas, SDI ou contrariar súmulas/OJs do TST e súmulas vinculantes do STF.</p>
+    <div class="choices">
+      <button id="btnV-33" class="btn" onclick="checkAnswer(33, 'V')">Verdadeiro</button>
+      <button id="btnF-33" class="btn" onclick="checkAnswer(33, 'F')">Falso</button>
+    </div>
+    <div id="fb-33" class="feedback"></div>
+    <details id="exp-33">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Ideia:</strong> Garantia de uniformidade interna da jurisprudência do TST.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Embargos de Divergência (SDI).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="34" data-correct="V">
+    <p class="statement"><strong>34.</strong> O Agravo de Instrumento é cabível de despachos que denegarem a interposição de recursos.</p>
+    <div class="choices">
+      <button id="btnV-34" class="btn" onclick="checkAnswer(34, 'V')">Verdadeiro</button>
+      <button id="btnF-34" class="btn" onclick="checkAnswer(34, 'F')">Falso</button>
+    </div>
+    <div id="fb-34" class="feedback"></div>
+    <details id="exp-34">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> CLT art. 897, ‘b’.</li>
+        <li><strong>Prática:</strong> Pode converter-se no próprio recurso principal se o instrumento estiver completo e o agravo for provido.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Agravo de Instrumento (cabimento e procedimento).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="35" data-correct="F">
+    <p class="statement"><strong>35.</strong> Há sustentação oral no Agravo de Instrumento na JT.</p>
+    <div class="choices">
+      <button id="btnV-35" class="btn" onclick="checkAnswer(35, 'V')">Verdadeiro</button>
+      <button id="btnF-35" class="btn" onclick="checkAnswer(35, 'F')">Falso</button>
+    </div>
+    <div id="fb-35" class="feedback"></div>
+    <details id="exp-35">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Não há sustentação oral no AI, conforme procedimento indicado no material.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Agravo de Instrumento: procedimento (sem sustentação).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="36" data-correct="V">
+    <p class="statement"><strong>36.</strong> O Agravo de Petição é próprio da fase de execução e não cabe de decisões interlocutórias.</p>
+    <div class="choices">
+      <button id="btnV-36" class="btn" onclick="checkAnswer(36, 'V')">Verdadeiro</button>
+      <button id="btnF-36" class="btn" onclick="checkAnswer(36, 'F')">Falso</button>
+    </div>
+    <div id="fb-36" class="feedback"></div>
+    <details id="exp-36">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> CLT art. 897, ‘a’. Cabível, por exemplo, contra decisão que julga embargos à execução ou impugnação à liquidação.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Agravo de Petição (cabimento).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="37" data-correct="V">
+    <p class="statement"><strong>37.</strong> O Agravo Regimental (Interno) no TST serve para impugnar, entre outros, despacho do Relator que negar prosseguimento a recurso.</p>
+    <div class="choices">
+      <button id="btnV-37" class="btn" onclick="checkAnswer(37, 'V')">Verdadeiro</button>
+      <button id="btnF-37" class="btn" onclick="checkAnswer(37, 'F')">Falso</button>
+    </div>
+    <div id="fb-37" class="feedback"></div>
+    <details id="exp-37">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> Regimento Interno do TST, arts. 243-244 (hipóteses e processamento).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Agravo Regimental no TST (art. 243-244 do RITST).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="38" data-correct="V">
+    <p class="statement"><strong>38.</strong> O Recurso Extraordinário exige repercussão geral e questão constitucional, além de decisão de única ou última instância.</p>
+    <div class="choices">
+      <button id="btnV-38" class="btn" onclick="checkAnswer(38, 'V')">Verdadeiro</button>
+      <button id="btnF-38" class="btn" onclick="checkAnswer(38, 'F')">Falso</button>
+    </div>
+    <div id="fb-38" class="feedback"></div>
+    <details id="exp-38">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> EC 45; CPC art. 1035; requisitos específicos do RE.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Recurso Extraordinário (requisitos).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="39" data-correct="V">
+    <p class="statement"><strong>39.</strong> Pedido de Revisão do Valor da Causa (alçada) é cabível em ações até dois salários mínimos, segundo a Lei 5.584/70.</p>
+    <div class="choices">
+      <button id="btnV-39" class="btn" onclick="checkAnswer(39, 'V')">Verdadeiro</button>
+      <button id="btnF-39" class="btn" onclick="checkAnswer(39, 'F')">Falso</button>
+    </div>
+    <div id="fb-39" class="feedback"></div>
+    <details id="exp-39">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Objetiva corrigir valor da causa que impacta no rito e recorribilidade.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Pedido de revisão do valor da alçada (Lei 5.584/70).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="40" data-correct="F">
+    <p class="statement"><strong>40.</strong> Correição Parcial é um recurso previsto na CLT para atacar ato atentatório à boa ordem processual.</p>
+    <div class="choices">
+      <button id="btnV-40" class="btn" onclick="checkAnswer(40, 'V')">Verdadeiro</button>
+      <button id="btnF-40" class="btn" onclick="checkAnswer(40, 'F')">Falso</button>
+    </div>
+    <div id="fb-40" class="feedback"></div>
+    <details id="exp-40">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Correção:</strong> Correição parcial <em>não é recurso</em>; é medida sui generis, com prazo e competência regimentais (ex.: 8 dias no TRT20).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Correição Parcial (natureza e rito regimental).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="41" data-correct="V">
+    <p class="statement"><strong>41.</strong> No RR, é possível conhecimento por contrariedade a precedente normativo da SDC, conforme leitura finalística do art. 896 ‘a’ da CLT.</p>
+    <div class="choices">
+      <button id="btnV-41" class="btn" onclick="checkAnswer(41, 'V')">Verdadeiro</button>
+      <button id="btnF-41" class="btn" onclick="checkAnswer(41, 'F')">Falso</button>
+    </div>
+    <div id="fb-41" class="feedback"></div>
+    <details id="exp-41">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> Entendimento da SDI-1 do TST: jurisprudência uniformizada como gênero (súmulas, OJs e precedentes normativos).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Julgado SDI-1 (E-RR 2294-39.2012.5.02.0029).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="42" data-correct="V">
+    <p class="statement"><strong>42.</strong> A Reforma Trabalhista (Lei 13.467/2017) introduziu indicadores de transcendência e ampliou poderes monocráticos do relator no TST.</p>
+    <div class="choices">
+      <button id="btnV-42" class="btn" onclick="checkAnswer(42, 'V')">Verdadeiro</button>
+      <button id="btnF-42" class="btn" onclick="checkAnswer(42, 'F')">Falso</button>
+    </div>
+    <div id="fb-42" class="feedback"></div>
+    <details id="exp-42">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Detalhe:</strong> CLT art. 896-A, §§1º-6º (transcendência) e art. 896 §14 (poderes do relator, em simetria ao CPC art. 932).</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Alterações pela Lei 13.467/2017.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="43" data-correct="V">
+    <p class="statement"><strong>43.</strong> Segundo a Súmula 221/TST, a admissibilidade por violação exige indicação expressa do dispositivo de lei ou da Constituição tido como violado.</p>
+    <div class="choices">
+      <button id="btnV-43" class="btn" onclick="checkAnswer(43, 'V')">Verdadeiro</button>
+      <button id="btnF-43" class="btn" onclick="checkAnswer(43, 'F')">Falso</button>
+    </div>
+    <div id="fb-43" class="feedback"></div>
+    <details id="exp-43">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Cuidar da indicação precisa do dispositivo para viabilizar o conhecimento por violação literal.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Súmula 221/TST.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="44" data-correct="F">
+    <p class="statement"><strong>44.</strong> Segundo a Súmula 296/TST, a divergência jurisprudencial pode ser genérica e tratar de dispositivos diferentes desde que o tema seja semelhante.</p>
+    <div class="choices">
+      <button id="btnV-44" class="btn" onclick="checkAnswer(44, 'V')">Verdadeiro</button>
+      <button id="btnF-44" class="btn" onclick="checkAnswer(44, 'F')">Falso</button>
+    </div>
+    <div id="fb-44" class="feedback"></div>
+    <details id="exp-44">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Fixe:</strong> Divergência deve ser <em>específica</em>: mesmas premissas fáticas e interpretação diversa do <em>mesmo</em> dispositivo.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Súmula 296/TST (especificidade).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="45" data-correct="F">
+    <p class="statement"><strong>45.</strong> A Súmula 111 da SDI-I admite aresto do mesmo TRT como paradigma de divergência no RR, sem qualquer restrição.</p>
+    <div class="choices">
+      <button id="btnV-45" class="btn" onclick="checkAnswer(45, 'V')">Verdadeiro</button>
+      <button id="btnF-45" class="btn" onclick="checkAnswer(45, 'F')">Falso</button>
+    </div>
+    <div id="fb-45" class="feedback"></div>
+    <details id="exp-45">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Correção:</strong> OJ 111 da SDI-I: aresto do mesmo TRT <em>não</em> é servível, salvo RR interposto antes da Lei 9.756/98.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – OJ 111 SDI-I/TST.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="46" data-correct="F">
+    <p class="statement"><strong>46.</strong> OJ 147 SDI-I/TST: RR apenas por divergência é admissível mesmo que a norma seja de âmbito restrito ao TRT prolator.</p>
+    <div class="choices">
+      <button id="btnV-46" class="btn" onclick="checkAnswer(46, 'V')">Verdadeiro</button>
+      <button id="btnF-46" class="btn" onclick="checkAnswer(46, 'F')">Falso</button>
+    </div>
+    <div id="fb-46" class="feedback"></div>
+    <details id="exp-46">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Exige-se que a norma (lei estadual, ACT, CCT, regulamento) exceda a jurisdição do TRT prolator.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – OJ 147 SDI-I/TST.</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="47" data-correct="V">
+    <p class="statement"><strong>47.</strong> Embargos de declaração têm prazo de cinco dias no processo do trabalho.</p>
+    <div class="choices">
+      <button id="btnV-47" class="btn" onclick="checkAnswer(47, 'V')">Verdadeiro</button>
+      <button id="btnF-47" class="btn" onclick="checkAnswer(47, 'F')">Falso</button>
+    </div>
+    <div id="fb-47" class="feedback"></div>
+    <details id="exp-47">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> CLT art. 897-A; julgamento na primeira sessão subsequente; admite efeito modificativo nas hipóteses legais.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – ED (prazo e julgamento).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="48" data-correct="V">
+    <p class="statement"><strong>48.</strong> No Agravo de Petição, o prazo é de 8 dias, com prazo em dobro para Fazenda Pública, MPT e Defensoria Pública.</p>
+    <div class="choices">
+      <button id="btnV-48" class="btn" onclick="checkAnswer(48, 'V')">Verdadeiro</button>
+      <button id="btnF-48" class="btn" onclick="checkAnswer(48, 'F')">Falso</button>
+    </div>
+    <div id="fb-48" class="feedback"></div>
+    <details id="exp-48">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Revisão:</strong> Mantenha em mente a natureza executiva do AP e as exceções de prazo em dobro indicadas no material.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Agravo de Petição (prazo e sujeitos com prazo em dobro).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="49" data-correct="V">
+    <p class="statement"><strong>49.</strong> O agravo regimental no TST é concluso ao prolator do despacho, que pode reconsiderá-lo ou levá-lo a julgamento colegiado.</p>
+    <div class="choices">
+      <button id="btnV-49" class="btn" onclick="checkAnswer(49, 'V')">Verdadeiro</button>
+      <button id="btnF-49" class="btn" onclick="checkAnswer(49, 'F')">Falso</button>
+    </div>
+    <div id="fb-49" class="feedback"></div>
+    <details id="exp-49">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Base:</strong> RITST art. 244; regras sobre relatoria quando há término de mandato/afastamento.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – Agravo regimental: processamento (RITST arts. 243-244).</div>
+    </details>
+  </div>
+
+  <div class="question" data-q="50" data-correct="F">
+    <p class="statement"><strong>50.</strong> O RR admite jus postulandi, bastando a parte assinar o recurso sem advogado.</p>
+    <div class="choices">
+      <button id="btnV-50" class="btn" onclick="checkAnswer(50, 'V')">Verdadeiro</button>
+      <button id="btnF-50" class="btn" onclick="checkAnswer(50, 'F')">Falso</button>
+    </div>
+    <div id="fb-50" class="feedback"></div>
+    <details id="exp-50">
+      <summary>Ver explicação e fonte</summary>
+      <div class="explanation"><ul>
+        <li><strong>Fixe:</strong> Súmula 425/TST: RR não admite jus postulandi; é obrigatória a representação por advogado.</li>
+     </ul></div>
+      <div class="source">Fonte: Ponto 10 – RR: Súmula 425/TST.</div>
+    </details>
+  </div>
+
+</body>
+</html>
